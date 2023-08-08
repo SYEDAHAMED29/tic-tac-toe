@@ -45,11 +45,34 @@ const winningPatterns = [
 ];
 let squareState = new Array(9).fill("");
 
+function reload() {
+   // squareState = new Array(9).fill("");
+   // allSquares.forEach((btn) => {
+   //    btn.innerHTML = "";
+   //    btn.style.cursor = "pointer";
+   // });
+   // enabled();
+   // currentState = true;
+   // playerTurn.setAttribute("src", "./assets/icon-x.svg");
+   // allSquares.forEach((btn) => (btn.style.backgroundColor = "#1f3641"));
+
+   squareState = new Array(9).fill("");
+   allSquares.forEach((btn) => {
+      btn.innerHTML = "";
+      btn.style.cursor = "pointer";
+      btn.disabled = false;
+   });
+   playerTurn.setAttribute("src", "./assets/icon-x.svg");
+   allSquares.forEach((btn) => (btn.style.backgroundColor = "#1f3641"));
+   currentState = true;
+   currentPlayer = "X";
+}
+
 quitBtn.addEventListener("click", () => {
-   newGame.style.display = "block";
-   startGame.style.display = "none";
+   newGame.style.display = "none";
+   startGame.style.display = "block";
    modal.style.display = "none";
-   reload();
+   // reload();
 });
 
 nextRoundBtn.addEventListener("click", () => {
@@ -64,7 +87,7 @@ tiequitBtn.addEventListener("click", () => {
    startGame.style.display = "none";
    modal.style.display = "none";
    tieModal.style.display = "none";
-   reload();
+   // reload();
 });
 
 tienextRoundBtn.addEventListener("click", () => {
@@ -83,7 +106,7 @@ icons.forEach((icon) => {
 
 function winnerBackground(pattern) {
    const [x, y, z] = pattern;
-   if (currentPlayer == "X") {
+   if (currentPlayer == "O") {
       allSquares[x].style.backgroundColor = "#65e9e4";
       allSquares[y].style.backgroundColor = "#65e9e4";
       allSquares[z].style.backgroundColor = "#65e9e4";
@@ -105,7 +128,7 @@ function checkWin() {
       ) {
          winnerBackground(pattern);
          currentPlayer == "X" ? console.log("x wins") : console.log("o wins");
-         if (currentPlayer == "X") {
+         if (currentPlayer == "O") {
             winnerIcon.setAttribute("src", "./assets/icon-x.svg");
             winnerHeading.style.color = "#31c3bd";
             xWinCount++;
@@ -141,7 +164,6 @@ function tieGame() {
          startGame.style.display = "block";
          modal.style.display = "none";
          tieModal.style.display = "block";
-         body.classList.add("modal-open");
       }
    }
 }
@@ -151,29 +173,6 @@ function enabled() {
 }
 function disabled() {
    return allSquares.forEach((btn) => (btn.disabled = true));
-}
-
-function multiplayerGame() {
-   allSquares.forEach((btn, index) => {
-      btn.addEventListener("click", () => {
-         if (currentState) {
-            btn.innerHTML = `<img src="./assets/icon-x.svg" />`;
-            playerTurn.setAttribute("src", "./assets/icon-o.svg");
-            currentPlayer = "X";
-            squareState[index] = "X";
-         } else {
-            btn.innerHTML = `<img src="./assets/icon-o.svg" />`;
-            playerTurn.setAttribute("src", "./assets/icon-x.svg");
-            currentPlayer = "O";
-            squareState[index] = "O";
-         }
-         btn.disabled = true;
-         btn.style.cursor = "not-allowed";
-         currentState = !currentState;
-         checkWin();
-         tieGame();
-      });
-   });
 }
 
 restart.addEventListener("click", () => {
@@ -202,19 +201,6 @@ cancelBtn.addEventListener("click", () => {
    restartModal.style.display = "none";
 });
 
-function reload() {
-   squareState = new Array(9).fill("");
-   allSquares.forEach((btn) => {
-      btn.innerHTML = "";
-      btn.style.cursor = "pointer";
-   });
-   enabled();
-   currentState = true;
-   playerTurn.setAttribute("src", "./assets/icon-x.svg");
-   allSquares.forEach((btn) => (btn.style.backgroundColor = "#1f3641"));
-   body.classList.add("modal-open");
-}
-
 let gameCurrentPlayerOne = "";
 
 function gameCurrentPlayer(player) {
@@ -230,6 +216,40 @@ function gameCurrentPlayer(player) {
 
 xIcon.addEventListener("click", () => gameCurrentPlayer("X"));
 oIcon.addEventListener("click", () => gameCurrentPlayer("O"));
+
+function multiplayerGame() {
+   allSquares.forEach((btn, index) => {
+      btn.addEventListener("click", () => {
+         // if (currentState) {
+         //    btn.innerHTML = `<img src="./assets/icon-x.svg" />`;
+         //    playerTurn.setAttribute("src", "./assets/icon-o.svg");
+         //    currentPlayer = "X";
+         //    squareState[index] = "X";
+         // } else {
+         //    btn.innerHTML = `<img src="./assets/icon-o.svg" />`;
+         //    playerTurn.setAttribute("src", "./assets/icon-x.svg");
+         //    currentPlayer = "O";
+         //    squareState[index] = "O";
+         // }
+         // btn.disabled = true;
+         // btn.style.cursor = "not-allowed";
+         // currentState = !currentState;
+         // checkWin();
+         // tieGame();
+         if (squareState[index] === "") {
+            btn.innerHTML = `<img src="./assets/icon-${currentPlayer.toLowerCase()}.svg" />`;
+            squareState[index] = currentPlayer;
+            btn.disabled = true;
+            btn.style.cursor = "not-allowed";
+            currentState = !currentState;
+            currentPlayer = currentState ? "X" : "O";
+            playerTurn.setAttribute("src", `./assets/icon-${currentPlayer.toLowerCase()}.svg`);
+            checkWin();
+            tieGame();
+         }
+      });
+   });
+}
 newGamePlayer.addEventListener("click", () => {
    if (gameCurrentPlayerOne == "") {
       return;

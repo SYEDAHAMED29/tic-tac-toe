@@ -162,7 +162,7 @@ button {
 }
 
 .restart-part:hover {
-   background-color: var(--sliverHover);
+   background-color: var(--silverHover);
 }
 
 table {
