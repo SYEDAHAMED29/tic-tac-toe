@@ -425,6 +425,7 @@ table {
    }
    #start-game-header {
       margin-left: 0rem;
+      padding: 0 1rem;
    }
 
    #start-game {
@@ -433,7 +434,7 @@ table {
    #square {
       width: 100px;
       height: 100px;
-      margin: 0rem;
+      margin: 0.2rem;
       box-shadow: inset 0 -0.4rem 0 #0f191e;
    }
 
