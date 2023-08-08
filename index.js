@@ -118,6 +118,7 @@ function winnerBackground(pattern) {
 }
 
 function checkWin() {
+   let winDetected = false;
    winningPatterns.forEach((pattern) => {
       let [a, b, c] = pattern;
 
@@ -143,18 +144,18 @@ function checkWin() {
          }
          console.log(xWinCount, oWinCount);
          disabled();
-      } else {
-         return false;
+         winDetected = true;
       }
    });
+   return winDetected;
 }
 function checkAllTurnsPlayed() {
    return Array.from(allSquares).every((btn) => btn.innerHTML !== "");
 }
 
 function tieGame() {
-   if (checkAllTurnsPlayed()) {
-      if (!checkWin()) {
+   if (!checkWin()) {
+      if (checkAllTurnsPlayed()) {
          tieCount++;
          console.log(tieCount);
          tieGames.textContent = tieCount;
