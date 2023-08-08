@@ -7,33 +7,134 @@
       <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
 
       <title>Frontend Mentor | Tic Tac Toe | Syed Ahamed</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap"
+         rel="stylesheet"
+      />
       <link rel="stylesheet" href="styles.css" />
    </head>
    <body>
-      <!-- New game menu start -->
+      <main>
+         <!--? New game menu start -->
+         <section id="new-game">
+            <img src="./assets/logo.svg" alt="logo" class="logo" />
 
-      Pick player 1's mark Remember: X goes first New Game (vs CPU) New Game (vs player)
+            <div id="pick-player-one">
+               <h3>PICK PLAYER 1'S MARK</h3>
+               <div class="xo-icons">
+                  <button class="x-icon" value="X" id="icons">
+                     <img src="./assets/icon-x.svg" alt="X" width="32px" />
+                  </button>
+                  <button class="o-icon" value="O" id="icons">
+                     <img src="./assets/icon-o.svg" alt="O" width="32px" />
+                  </button>
+               </div>
+               <p>REMEMBER: X GOES FIRST</p>
+            </div>
+            <div class="newGame-btns">
+               <button id="newGame-cpu">NEW GAME (vs CPU)</button>
+               <button id="newGame-player">NEW GAME (vs PLAYER)</button>
+            </div>
+         </section>
 
-      <!-- New game menu end -->
+         <section id="start-game">
+            <header id="start-game-header">
+               <img src="./assets/logo.svg" alt="logo" height="31px" />
+               <div class="player-turns">
+                  <img src="./assets/icon-x.svg" alt="X" width="20px" height="20px" id="img-turn" />
+                  <p>TURN</p>
+               </div>
+               <div class="restart-part" id="restart">
+                  <img src="./assets/icon-restart.svg" alt="" />
+               </div>
+            </header>
+            <table>
+               <tr>
+                  <td><button id="square"></button></td>
+                  <td><button id="square"></button></td>
+                  <td><button id="square"></button></td>
+               </tr>
+               <tr>
+                  <td><button id="square"></button></td>
+                  <td><button id="square"></button></td>
+                  <td><button id="square"></button></td>
+               </tr>
+               <tr>
+                  <td><button id="square"></button></td>
+                  <td><button id="square"></button></td>
+                  <td><button id="square"></button></td>
+               </tr>
+               <tr>
+                  <td>
+                     <div class="player-wins">
+                        <p id="x-player"></p>
+                        <p id="x-wins">0</p>
+                     </div>
+                  </td>
+                  <td>
+                     <div class="tie-game">
+                        <p>TIES</p>
+                        <p id="tie-game-count">0</p>
+                     </div>
+                  </td>
+                  <td>
+                     <div class="cpu-wins">
+                        <p id="o-player"></p>
+                        <p id="o-wins">0</p>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+            <div class="wins-part"></div>
+         </section>
+         <section id="game-result">
+            <p class="winner-content"></p>
+            <div class="winner-icon">
+               <img src="./assets/icon-x.svg" alt="" width="64px" height="64px" id="winner-icon" />
+               <h1 id="winner-heading">TAKES THE ROUND</h1>
+            </div>
 
-      <!-- Game board start -->
+            <div class="modal-buttons">
+               <button id="quit">QUIT</button>
+               <button id="next-round">NEXT ROUND</button>
+            </div>
+         </section>
 
-      <!-- x/o icon -->
-      turn X (You)
-      <!-- Your score -->
-      Ties
-      <!-- Ties score -->
-      X (CPU)
-      <!-- CPU score -->
+         <section id="restart-modal">
+            <h1>RESTART GAME?</h1>
+            <button id="cancel">NO, CANCEL</button>
+            <button class="restart-btn">YES, RESTART</button>
+         </section>
 
-      Oh no, you lost You won! Player
-      <!-- 1/2 -->
-      wins!
-
-      <!-- x/o icon -->
-      takes the round Round tied Restart game? Quit Next round No, cancel Yes, restart
-
-      <!-- Game board end -->
+         <section id="tie-modal">
+            <h1>ROUND TIED</h1>
+            <button id="tie-quit">QUIT</button>
+            <button id="tie-next-round">NEXT ROUND</button>
+         </section>
+      </main>
    </body>
    <script src="index.js" defer></script>
 </html>
+
+<!-- Pick player 1's mark Remember: X goes first New Game (vs CPU) New Game (vs player) -->
+
+<!-- New game menu end -->
+
+<!-- Game board start -->
+
+<!-- x/o icon -->
+<!-- turn X (You) -->
+<!-- Your score -->
+<!-- Ties -->
+<!-- Ties score -->
+<!-- X (CPU) -->
+<!-- CPU score -->
+
+<!-- Oh no, you lost You won! Player -->
+<!-- 1/2 -->
+<!-- wins! -->
+
+<!-- x/o icon -->
+<!-- takes the round Round tied Restart game? Quit Next round No, cancel Yes, restart Game board end -->
