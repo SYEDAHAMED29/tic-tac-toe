@@ -411,3 +411,15 @@ table {
    border: none;
    cursor: pointer;
 }
+
+@media (max-width: 430px) {
+   #new-game {
+      /* display: none; */
+      width: 325px;
+      /* border: 2px solid black; */
+   }
+
+   #start-game {
+      width: 100%;
+   }
+}
