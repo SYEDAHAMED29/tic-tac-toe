@@ -153,10 +153,22 @@ function checkAllTurnsPlayed() {
 }
 
 function tieGame() {
-   console.log(checkAllTurnsPlayed());
-
    if (checkAllTurnsPlayed()) {
-      if (!checkWin() || !checkSoloWin()) {
+      if (!checkWin()) {
+         tieCount++;
+         console.log(tieCount);
+         tieGames.textContent = tieCount;
+         newGame.style.display = "none";
+         startGame.style.display = "block";
+         modal.style.display = "none";
+         tieModal.style.display = "block";
+      }
+   }
+}
+
+function tieSoloGame() {
+   if (checkAllTurnsPlayed()) {
+      if (!checkSoloWin()) {
          tieCount++;
          console.log(tieCount);
          tieGames.textContent = tieCount;
@@ -311,7 +323,7 @@ function cpuMove() {
             }, 500);
          } else if (checkAllTurnsPlayed()) {
             console.log("tieGame");
-            tieGame();
+            tieSoloGame();
          } else {
             cpuPlayer = "X";
          }
@@ -345,7 +357,7 @@ function soloGame() {
          } else if (checkAllTurnsPlayed()) {
             console.log("tieGame");
             gameOver = true;
-            tieGame();
+            tieSoloGame();
          } else {
             cpuPlayer = "X";
 

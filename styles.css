@@ -303,6 +303,11 @@ table {
    background-color: var(--lightYellowHover);
 }
 
+#winner-icon {
+   height: 64px;
+   width: 64px;
+}
+
 /* body::before {
    content: "";
    position: fixed;
@@ -418,8 +423,34 @@ table {
       width: 325px;
       /* border: 2px solid black; */
    }
+   #start-game-header {
+      margin-left: 0rem;
+   }
 
    #start-game {
       width: 350px;
+   }
+   #square {
+      width: 100px;
+      height: 100px;
+      margin: 0rem;
+      box-shadow: inset 0 -0.4rem 0 #0f191e;
+   }
+
+   .winner-content {
+      font-size: 14px;
+   }
+   .winner-icon h1 {
+      font-size: 24px;
+
+      letter-spacing: 1.5px;
+      color: var(--lightBlue);
+   }
+   .winner-icon {
+      gap: 1rem;
+   }
+   #winner-icon {
+      height: 28px;
+      width: 28px;
    }
 }
