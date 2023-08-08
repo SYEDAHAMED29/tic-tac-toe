@@ -230,25 +230,31 @@ function gameCurrentPlayer(player) {
 xIcon.addEventListener("click", () => gameCurrentPlayer("X"));
 oIcon.addEventListener("click", () => gameCurrentPlayer("O"));
 
+function handleBtnHover(event, index) {
+   const cell = event.target;
+   if (squareState[index] === "") {
+      const hoverImaage =
+         currentPlayer === "X" ? "./assets/icon-x-outline.svg" : "./assets/icon-o-outline.svg";
+      cell.innerHTML = `<img src=${hoverImaage} />`;
+   }
+}
+
+function handleBtnUnHover(event, index) {
+   const cell = event.target;
+   if (squareState[index] === "") {
+      cell.innerHTML = "";
+   }
+}
+
 function multiplayerGame() {
    allSquares.forEach((btn, index) => {
+      btn.addEventListener("mouseover", (event) => {
+         handleBtnHover(event, index);
+      });
+      btn.addEventListener("mouseleave", (event) => {
+         handleBtnUnHover(event, index);
+      });
       btn.addEventListener("click", () => {
-         // if (currentState) {
-         //    btn.innerHTML = `<img src="./assets/icon-x.svg" />`;
-         //    playerTurn.setAttribute("src", "./assets/icon-o.svg");
-         //    currentPlayer = "X";
-         //    squareState[index] = "X";
-         // } else {
-         //    btn.innerHTML = `<img src="./assets/icon-o.svg" />`;
-         //    playerTurn.setAttribute("src", "./assets/icon-x.svg");
-         //    currentPlayer = "O";
-         //    squareState[index] = "O";
-         // }
-         // btn.disabled = true;
-         // btn.style.cursor = "not-allowed";
-         // currentState = !currentState;
-         // checkWin();
-         // tieGame();
          if (squareState[index] === "") {
             btn.innerHTML = `<img src="./assets/icon-${currentPlayer.toLowerCase()}.svg" />`;
             squareState[index] = currentPlayer;
@@ -334,6 +340,19 @@ function cpuMove() {
 
 function soloGame() {
    allSquares.forEach((btn, index) => {
+      btn.addEventListener("mouseover", (event) => {
+         let cell = event.target;
+         if (squareState[index] === "") {
+            const hoverImaage = "./assets/icon-x-outline.svg";
+            cell.innerHTML = `<img src=${hoverImaage} />`;
+         }
+      });
+      btn.addEventListener("mouseleave", (event) => {
+         let cell = event.target;
+         if (squareState[index] === "") {
+            cell.innerHTML = "";
+         }
+      });
       btn.addEventListener("click", () => {
          playerTurn.setAttribute("src", "./assets/icon-o.svg");
          btn.innerHTML = `<img src="./assets/icon-x.svg" />`;
