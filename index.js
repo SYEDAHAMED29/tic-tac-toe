@@ -46,16 +46,6 @@ const winningPatterns = [
 let squareState = new Array(9).fill("");
 
 function reload() {
-   // squareState = new Array(9).fill("");
-   // allSquares.forEach((btn) => {
-   //    btn.innerHTML = "";
-   //    btn.style.cursor = "pointer";
-   // });
-   // enabled();
-   // currentState = true;
-   // playerTurn.setAttribute("src", "./assets/icon-x.svg");
-   // allSquares.forEach((btn) => (btn.style.backgroundColor = "#1f3641"));
-
    squareState = new Array(9).fill("");
    allSquares.forEach((btn) => {
       btn.innerHTML = "";
@@ -69,10 +59,10 @@ function reload() {
 }
 
 quitBtn.addEventListener("click", () => {
-   newGame.style.display = "none";
-   startGame.style.display = "block";
+   newGame.style.display = "block";
+   startGame.style.display = "none";
    modal.style.display = "none";
-   // reload();
+   reload();
 });
 
 nextRoundBtn.addEventListener("click", () => {
@@ -87,7 +77,7 @@ tiequitBtn.addEventListener("click", () => {
    startGame.style.display = "none";
    modal.style.display = "none";
    tieModal.style.display = "none";
-   // reload();
+   reload();
 });
 
 tienextRoundBtn.addEventListener("click", () => {
@@ -271,6 +261,7 @@ function multiplayerGame() {
 }
 newGamePlayer.addEventListener("click", () => {
    if (gameCurrentPlayerOne == "") {
+      window.alert("Pick Your Mark");
       return;
    }
 
@@ -391,6 +382,7 @@ xIcon.addEventListener("click", () => (cpuCurrentPlayerOne = "X"));
 oIcon.addEventListener("click", () => (cpuCurrentPlayerOne = "O"));
 newGameCpu.addEventListener("click", () => {
    if (cpuCurrentPlayerOne == "") {
+      window.alert("Pick Your Mark");
       return;
    }
    xPlayer.textContent = "X (YOU)";
